@@ -51,7 +51,8 @@ Basic Steps involved in Symmetric Cipher is :
        
         1. introducing monoalphabetic substitution : wherein one could define mapping such that any letter of the alphabet could be replaced by any other possible alphabet and hence there may exist upto **26!**  different keys ( or arrangments ) to be tried before cracking the key of the given cipher.
  
-[x] Caesar-Cipher 
+[ X ] Caesar-Cipher 
+
 [ ] Cryptanalysis and statistical view point of the algorithms
 
   
