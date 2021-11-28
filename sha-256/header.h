@@ -6,6 +6,7 @@ using namespace std;
 typedef unsigned char byte; // 8 bits
 typedef unsigned int word;  // 32 bits
 
+void SHA256(const byte data_stream[], size_t data_length, byte output_hash[]);
 static const word sha_256_keys[] = {
     0x428a2f98,
     0x71374491,
@@ -73,6 +74,5 @@ static const word sha_256_keys[] = {
     0xc67178f2,
 };
 
-int hash_buffer[8]; 
 
 #endif

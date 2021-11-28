@@ -1,4 +1,5 @@
 #include "header.h"
+int hash_buffer[8];
 
 uint32_t sha_right_shift(uint32_t x, uint32_t n)
 {
@@ -40,10 +41,6 @@ uint32_t sha_message_function1(uint32_t x)
 uint32_t sha_message_function_2(uint32_t x)
 {
     return sha_circular_right_shift(x, 6) ^ sha_circular_right_shift(x, 11) ^ sha_circular_right_shift(x, 25);
-}
-uint32_t addition_overflow(uint32_t x, uint32_t y)
-{
-    return 1;
 }
 
 void init_message_digest(word W[64], const byte data_stream[])
@@ -108,6 +105,15 @@ void sha256_mainloop(const byte data_stream[])
 
 void SHA256(const byte data_stream[], size_t data_length, byte output_hash[])
 {
+
+    hash_buffer[0] = 0x6a09e667;
+    hash_buffer[1] = 0xbb67ae85;
+    hash_buffer[2] = 0x3c6ef372;
+    hash_buffer[3] = 0xa54ff53a;
+    hash_buffer[4] = 0x510e527f;
+    hash_buffer[5] = 0x9b05688c;
+    hash_buffer[6] = 0x1f83d9ab;
+    hash_buffer[7] = 0x5be0cd19;
     word i = 0;
     word len = 0;
     byte temp_buffer[64];
@@ -174,26 +180,24 @@ void SHA256(const byte data_stream[], size_t data_length, byte output_hash[])
     }
 }
 
+/*
 int main(int argc, char *argv[])
 {
     // int n;
     // byte data[] = argv[1];
-    hash_buffer[0] = 0x6a09e667;
-    hash_buffer[1] = 0xbb67ae85;
-    hash_buffer[2] = 0x3c6ef372;
-    hash_buffer[3] = 0xa54ff53a;
-    hash_buffer[4] = 0x510e527f;
-    hash_buffer[5] = 0x9b05688c;
-    hash_buffer[6] = 0x1f83d9ab;
-    hash_buffer[7] = 0x5be0cd19;
-    byte text1[] = "abc";
-    byte output_hash[64];
-    SHA256(text1, 3, output_hash);
 
+    string s;
+    cout << "Enter The String Whose Hash is to be done" << endl;
+    cin >> s;
+    byte output_hash[64];
+    SHA256((const byte *)s.c_str(), s.length(), output_hash);
+    cout << "The Hash is : ";
     for (int i = 0; i < 32; i++)
     {
         printf("%02x", output_hash[i]);
     }
     cout << endl;
+
     return 0;
 }
+*/
